@@ -50,21 +50,39 @@ $error_msg = "";
 
     include ('includes/header_inc.php');
     include ('includes/navigation_inc.php');
-  // If the session var is empty, show any error message and the log-in form; otherwise confirm the log-in
+?>
+
+<div class="g1-container"><!-- Container holds content -->
+  <?php
+  echo '<h2 class="g-minion-c">Minions Club</h2>';
+  ?>
+<div class="form-content"><!-- Container holds form -->
+  <form method="post" action="<?php echo $_SERVER['PHP_SELF']; ?>">
+      <p>Log In</p>
+    <fieldset>
+      <label for="username">Username</label>
+      <br>
+      <input type="text" name="minion_name" value="<?php if (!empty($minion_name)) echo $minion_name; ?>" />
+      <br>
+      <label for="password">Password</label>
+      <br>
+      <input type="password" name="password" />
+    </fieldset>
+    <br>
+    <input type="submit" value="Log In" name="submit" />
+  </form>
+  <?php
+    // If the session var is empty, show any error message and the log-in form; otherwise confirm the log-in
   if (empty($_SESSION['minion_id'])) {
     echo '<p class="error">' . $error_msg . '</p>';
 ?>
-
-  <form method="post" action="<?php echo $_SERVER['PHP_SELF']; ?>">
-    <fieldset>
-      <legend>Log In</legend>
-      <label for="username">Minion Name:</label>
-      <input type="text" name="minion_name" value="<?php if (!empty($minion_name)) echo $minion_name; ?>" /><br />
-      <label for="password">Password:</label>
-      <input type="password" name="password" />
-    </fieldset>
-    <input type="submit" value="Log In" name="submit" />
-  </form>
+<p class="p-iframe">Your a memeber now so watch please</p>
+<div class="iframe">
+<iframe width="600" height="400" src="https://www.youtube.com/embed/QmsB9NEsVFU"
+ frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+</div>
+  </div>
+</div>
 
 <?php
   }

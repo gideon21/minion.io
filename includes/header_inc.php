@@ -3,20 +3,23 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 
-    <title>Minion Mates</title>
+    <title>Minion.io</title>
 
-    <link  rel="stylesheet" type="text/css" href="css/main.css"/>
-    <link href='http://fonts.googleapis.com/css?family=Exo:400,800,900' rel='stylesheet' type='text/css'>
-    <?php require_once("includes/appvars.php"); ?> <!-- Image loading stuff -->
-    <?php require_once("includes/connectvars.php"); ?> <!-- Database connection stuff -->
+    <link  rel="stylesheet" type="text/css" href="css/g_main.css"/>
+    <link  rel="stylesheet" type="text/css" href="css/g_nav.css"/>
+  <link href="https://fonts.googleapis.com/css?family=Bebas+Neue|Roboto&display=swap" rel="stylesheet">
+    <?php require_once("includes/appvars_inc.php"); ?> <!-- Image loading stuff -->
+    <?php require_once("includes/connectvars_inc.php"); ?> <!-- Database connection stuff -->
+    <script type="text/javascript" src="js/validate.js"></script>
+    <script type="text/javascript" src="js/minion-validations.js"></script>
+    <script type="text/javascript">
+    // This will trim spaces in a string
+       function removeSpaces(string) {
+           return string.split(' ').join('');
+       }
+   </script>
 
 
 </head>
 
 <body id="<?= basename($_SERVER['PHP_SELF'], ".php")?>">
-
-<div id="wrapper">
-  <!-- Old school HTML alert -->
-          <div id="header">
-        <h1>Minion Mates</h1>
-</div>

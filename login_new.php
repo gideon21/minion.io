@@ -42,11 +42,11 @@ $error_msg = "";
       }
     }
   }
-  
+
   ob_flush() ;
 ?>
 
-<! --this is all the page output code -->
+<!--this is all the page output code -->
 
 <?php
 
@@ -55,17 +55,25 @@ $error_msg = "";
   if (empty($_SESSION['minion_id'])) {
     echo '<p class="error">' . $error_msg . '</p>';
 ?>
-
+<div class="g1-container"><!-- Container holds content -->
+<div class="form-content"><!-- Container holds form -->
   <form method="post" action="<?php echo $_SERVER['PHP_SELF']; ?>">
+      <p>Log In</p>
     <fieldset>
-      <legend>Log In</legend>
-      <label for="username">Username:</label>
-      <input type="text" name="username" value="<?php if (!empty($user_username)) echo $user_username; ?>" /><br />
-      <label for="password">Password:</label>
+      <label for="username">Username</label>
+      <br>
+      <input type="text" name="username" value="<?php if (!empty($user_username)) echo $user_username; ?>" />
+      <br>
+      <label for="password">Password</label>
+      <br>
       <input type="password" name="password" />
     </fieldset>
+    <br>
     <input type="submit" value="Log In" name="submit" />
   </form>
+
+</div>
+</div>
 
 <?php
   }

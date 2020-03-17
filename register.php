@@ -4,8 +4,6 @@
 ?>
 
 
-<h2>Join the cause fellow minions</h2>
-
 <?php
 
       $dbc = mysqli_connect(DB_HOST, DB_USER, DB_PASSWORD, DB_NAME);
@@ -46,19 +44,99 @@
  mysqli_close($dbc);
 
 ?>
-
-  <h3>Please enter your username and desired password to sign up to minion Mates.</h3>
+  <div class="g1-container"><!-- Container holds content -->
+    <?php
+    echo '<h2 class="g-minion-c">Minions Club</h2>';
+    echo '<p class = "notice">Register now to become a memeber</p>';
+    ?>
+  <div class="form-content"><!-- Container holds form -->
+  <p>Your details</p>
   <form method="post" action="<?php echo $_SERVER['PHP_SELF']; ?>"><!-- Sensitive data so best to use  $_POST-->
     <fieldset><!-- Some horrible HTML here, I'm sure you could do better -->
-      <legend>Registration Info</legend>
-      <label for="username">Minion Name:</label>
-      <input type="text" id="minionname" name="minionname" value="<?php if (!empty($minionname)) echo $minionname; ?>" /><br /><!-- Something helpful-->
-      <label for="password1">Password:</label>
-      <input type="password" id="password1" name="password1" /><br />
-      <label for="password2">Password (retype):</label>
-      <input type="password" id="password2" name="password2" /><br />
+      <label for="username">Username</label>
+      <br>
+      <input type="text" id="minionname" name="minionname" value="<?php if (!empty($minionname)) echo $minionname; ?>" required />
+      <br>
+      <label for="email">Email address</label>
+                        <br>
+                        <input type="email" id="email" name="email" placeholder="Enter your email address" onblur="this.value=removeSpaces(this.value);" required />
+                        <br>
+      <label for="password1">Set a password</label>
+      <br>
+      <input type="password" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" id="password1" name="password1" required title="8 characters minimum" />
+      <br>
+      <label for="password2">Confirm password</label>
+      <br>
+      <input type="password" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" id="password2" name="password2" required title="8 characters minimum" />
+      <br>
     </fieldset>
+
+    <fieldset>
+                        <label for="title">Title *</label>
+                        <br>
+                        <select required>
+                            <option selected disabled>Choose Your title</option>
+                            <option value="Mr">Mr</option>
+                            <option value="Mrs">Mrs</option>
+                            <option value="Ms">Ms</option>
+                            <option value="Miss">Miss</option>
+                            <option value="Dr">Dr</option>
+                            <option value="Sir">Sir</option>
+                        </select>
+                        <br>
+                        <label for="fname">First name</label>
+                        <br>
+                        <input type="text" id="fname" name="fname" onblur="this.value=removeSpaces(this.value);" required />
+                        <br>
+                        <label for="lname">Last name</label>
+                        <br>
+                        <input type="text" id="lname" name="lname" onblur="this.value=removeSpaces(this.value);" required />
+                        <br>
+                        <label for="DOB">Date of Birth</label>
+                        <br>
+                        <input type="date" id="DOB" name="Date of Birth" required />
+                        <br>
+                        <label for="gender">Gender</label>
+                        <br>
+                        <input type="radio" id="male" name="gender" value="male">
+                        <label for="male">Male</label>
+                        <br>
+                        <input type="radio" id="female" name="gender" value="female">
+                        <label for="female">Female</label>
+                        <br>
+                    </fieldset>
+
+                    <fieldset>
+                        <label for="mobile">Mobile Number</label>
+                        <br>
+                        <input type="text" id="mobile" name="mobile" placeholder="Enter your mobile number" required />
+                        <br>
+                        <label for="tmobile">Telephone Number</label>
+                        <br>
+                        <input type="text" id="tphone" name="telephone" placeholder="Enter your telephone number" required />
+                        <br>
+                        <label for="address">Address</label>
+                        <br>
+                        <input type="text" id="address" name="address" placeholder="Address" required />
+                        <br>
+                        <label for="town">Town</label>
+                        <br>
+                        <input type="text" id="town" name="town" placeholder="Town" required />
+                        <br>
+                        <label for="county">County</label>
+                        <br>
+                        <input type="text" id="county" name="county" placeholder="County">
+                        <br>
+                        <label for="pcode">Post code</label>
+                        <br>
+                        <input type="text" id="pcode" name="postcode" placeholder="Enter your postcode" required />
+                    </fieldset>
+
+    <br>
     <input type="submit" value="Join Up" name="submit" />
   </form>
+
+            </div><!-- Close form container -->
+        </div>  <!-- End of container -->
 
 <?php include("includes/footer_inc.php"); ?>

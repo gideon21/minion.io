@@ -3,13 +3,17 @@ include("includes/header_inc.php");
 include("includes/navigation_inc.php");
 ?>
 
+<div class="g1-container">
+  <?php
+  echo '<h2 class="g-minion-c">Minions Club</h2>';
+  ?>
+  <div class="form-content">
 
  <?php
  // Make sure the user is logged in before going any further.
  // This shows you the you can't get any further if you have no session set
 
   if (!isset($_SESSION['minion_id'])) {
-
       echo '<h2>ACCESS DENIED</h2>';
 
     echo '<p class="login">Please <a href="login.php">log in</a> to access this page.</p>';
@@ -22,4 +26,6 @@ include("includes/navigation_inc.php");
   }
 
 ?>
+</div>
+</div>
 <?php include("includes/footer_inc.php"); ?>

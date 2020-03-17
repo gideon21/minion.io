@@ -3,8 +3,7 @@
     include("includes/header_inc.php");  //Now includes database connection to be tidy
     include("includes/navigation_inc.php"); // Dynamic navigation included here
 ?>
-
-<div id="main">
+<div class="g1-container">
 
 <?php
   // Connect to the database
@@ -20,18 +19,23 @@
   //Run the query!
 
   // Loop through the array of user data, formatting it as HTML
-  echo '<h3>Latest members:</h3>';
 
  //Start the HTML for a table, but outside of the main loop that brings the results back from the database
+echo '<h2 class="g-minion-c">Minions Club</h2>';
+echo '<p class = "notice">To join the Minions Club you must register</p>';
+echo '<div class="main-content">';
+echo '<h2>New members</h2>';
   echo '<table>';
-
   while ($row = mysqli_fetch_array($data)) {
     if (is_file(MM_UPLOADPATH . $row['picture']) && filesize(MM_UPLOADPATH . $row['picture']) > 0) {
       echo '<tr><td><img src="' . MM_UPLOADPATH . $row['picture'] . '" alt="' . $row['minion_name'] . '" /></td>';
     }// So if we can find a minion Record, their mugshot will be shown by default
+
     else
     {
-      echo '<tr><td><img src="' . MM_UPLOADPATH . 'default_gru.gif' . '" alt="' . $row['minion_name'] . '" /></td>';
+
+      echo '<tr><td><img src="' . MM_UPLOADPATH . 'profile_minion.png' . '" alt="' . $row['minion_name'] . '" /></td>';
+      echo '<br>';
     }// This bit of code puts in a default image if there is no profile picture
 
     if (isset($_SESSION['minion_id']))
@@ -44,12 +48,13 @@
   }
   }
   echo '</table>';
-
+  echo '</div>';
 
   mysqli_close($dbc);
 
 ?>
 
 </div>
+
 
 <?php include("includes/footer_inc.php"); ?>
