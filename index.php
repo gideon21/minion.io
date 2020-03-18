@@ -3,9 +3,9 @@
     include("includes/header_inc.php");  //Now includes database connection to be tidy
     include("includes/navigation_inc.php"); // Dynamic navigation included here
 ?>
-<div class="g1-container">
+    <div class="g1-container">
 
-<?php
+        <?php
   // Connect to the database
   require_once("includes/connectvars_inc.php");
   //echo DB_HOST, DB_USER ,DB_PASSWORD, DB_NAME;
@@ -54,7 +54,7 @@ echo '<h2>New members</h2>';
 
 ?>
 
-</div>
+    </div>
 
 
-<?php include("includes/footer_inc.php"); ?>
+    <?php include("includes/footer_inc.php"); ?>

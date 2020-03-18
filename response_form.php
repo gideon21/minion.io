@@ -10,17 +10,18 @@
   }
 ?>
 
-<!-- InstanceBegin template="/Templates/dating.dwt.php" codeOutsideHTMLIsLocked="false" --><?php include("includes/header_inc.php"); ?>
-<?php include("includes/navigation_inc.php"); ?>
+    <!-- InstanceBegin template="/Templates/dating.dwt.php" codeOutsideHTMLIsLocked="false" -->
+    <?php include("includes/header_inc.php"); ?>
+        <?php include("includes/navigation_inc.php"); ?>
 
 
-    <div id="main">
+            <div id="main">
 
-      <!-- InstanceBeginEditable name="content" -->
+                <!-- InstanceBeginEditable name="content" -->
 
- <h3>SoleMates - View Profile</h3>
+                <h3>SoleMates - View Profile</h3>
 
-<?php
+                <?php
 require_once("includes/connectvars_inc.php");
  // Make sure the user is logged in before going any further.
   if (!isset($_SESSION['user_id'])) {
@@ -99,8 +100,8 @@ require_once("includes/connectvars_inc.php");
 ?>
 
 
-	  <!-- InstanceEndEditable -->
-	  </div>
+                    <!-- InstanceEndEditable -->
+            </div>
 
-<?php include("includes/footer_inc.php"); ?>
-<!-- InstanceEnd -->
+            <?php include("includes/footer_inc.php"); ?>
+                <!-- InstanceEnd -->

@@ -9,7 +9,7 @@ body {
 }
 .minion-logo{
   text-align: center;
-  margin-top:-51px;
+  margin-top:-52px;
 }
 h2 {
     font-family:'Roboto', sans-serif;
@@ -42,15 +42,6 @@ h3 {
     margin-left: auto;
     margin-bottom: 40px;
     padding-bottom: 90px;
-    border: 1px solid #d9d9d9;
-    background-color: #fff;
-}
-.form-content {
-    padding: 10px 50px;
-    width: 62%;
-    height: 1000px;
-    margin-left: 35px;
-    margin-top: 100px;
     border: 1px solid #d9d9d9;
     background-color: #fff;
 }
@@ -120,6 +111,7 @@ h3 {
     text-align: center;
     line-height: 80px;
 }
+
 /*------------------Table Styling--------------------------------------------------------------*/
 
 caption {visibility:hidden;}

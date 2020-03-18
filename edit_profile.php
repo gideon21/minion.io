@@ -1,54 +1,55 @@
-
 <?php
     require_once("includes/startSession_inc.php"); //very important that this is first!
     include("includes/header_inc.php");
     include("includes/navigation_inc.php");
  ?>
 
-<div class="g1-container"><!-- Container holds content -->
-  <?php
+    <div class="g1-container">
+        <!-- Container holds content -->
+        <?php
   echo '<h2 class="g-minion-c">Minions Club</h2>';
   ?>
-   <p class="notice">Edit Profile</p>
-<div class="form-content"><!-- Container holds form -->
-<form enctype="multipart/form-data" method="post" action="<?php echo $_SERVER['PHP_SELF']; ?>">
-<input type="hidden" name="MAX_FILE_SIZE" value="<?php echo MM_MAXFILESIZE; ?>" />
-<p>Personal Information</p>
-<fieldset>
-<label for="minionname">Minion name</label>
-<br>
-<input type="text" id="minionname" name="minionname" value="<?php if (!empty($minion_name)) echo $minion_name; ?>" />
-<br>
-<label for="codename">Code name</label>
-<br>
-<input type="text" id="codename" name="codename" value="<?php if (!empty($code_name)) echo $code_name; ?>" />
-<br>
-<label for="cloned">Cloned</label>
-<br>
-<input type="text" id="cloned" name="cloned" value="<?php if (!empty($cloned)) echo $cloned; ?>" />
-<br>
-<label for="recruited">Recruited</label>
-<br>
-<input type="text" id="recruited" name="recruited" value="<?php if (!empty($recruited)) echo $recruited; else echo 'YYYY-MM-DD'; ?>" />
-<br>
-<label for="location">Location</label>
-<br>
-<input type="text" id="location" name="location" value="<?php if (!empty($location)) echo $location; ?>" />
-<br>
-<input type="hidden" name="old_picture" value="<?php if (!empty($old_picture)) echo $old_picture; ?>" />
-<br>
-<label for="new_picture">Picture</label>
-<br>
-<input type="file" id="new_picture" name="new_picture" />
-<?php if (!empty($old_picture)) {
+            <p class="notice">Edit Profile</p>
+            <div class="form-content">
+                <!-- Container holds form -->
+                <form enctype="multipart/form-data" method="post" action="<?php echo $_SERVER['PHP_SELF']; ?>">
+                    <input type="hidden" name="MAX_FILE_SIZE" value="<?php echo MM_MAXFILESIZE; ?>" />
+                    <p>Personal Information</p>
+                    <fieldset>
+                        <label for="minionname">Minion name</label>
+                        <br>
+                        <input type="text" id="minionname" name="minionname" value="<?php if (!empty($minion_name)) echo $minion_name; ?>" />
+                        <br>
+                        <label for="codename">Code name</label>
+                        <br>
+                        <input type="text" id="codename" name="codename" value="<?php if (!empty($code_name)) echo $code_name; ?>" />
+                        <br>
+                        <label for="cloned">Cloned</label>
+                        <br>
+                        <input type="text" id="cloned" name="cloned" value="<?php if (!empty($cloned)) echo $cloned; ?>" />
+                        <br>
+                        <label for="recruited">Recruited</label>
+                        <br>
+                        <input type="text" id="recruited" name="recruited" value="<?php if (!empty($recruited)) echo $recruited; else echo 'YYYY-MM-DD'; ?>" />
+                        <br>
+                        <label for="location">Location</label>
+                        <br>
+                        <input type="text" id="location" name="location" value="<?php if (!empty($location)) echo $location; ?>" />
+                        <br>
+                        <input type="hidden" name="old_picture" value="<?php if (!empty($old_picture)) echo $old_picture; ?>" />
+                        <br>
+                        <label for="new_picture">Picture</label>
+                        <br>
+                        <input type="file" id="new_picture" name="new_picture" />
+                        <?php if (!empty($old_picture)) {
   echo '<img class="minionmates" src="' . MM_UPLOADPATH . $old_picture . '" alt="minionmates Picture" />';
 } ?>
-</fieldset>
-<br>
-<input type="submit" value="Save Profile" name="submit" />
-</form>
+                    </fieldset>
+                    <br>
+                    <input type="submit" value="Save Profile" name="submit" />
+                </form>
 
-<?php
+                <?php
 // Make sure the user is logged in before going any further.
 // Create a link for them to do so, all helpful like!
 if (!isset($_SESSION['minion_id'])) {
@@ -63,7 +64,7 @@ echo('<p class="login">You are logged in as ' . $_SESSION['minion_name'] .  '. <
 
 ?>
 
-<?php
+                    <?php
 
 
   $dbc = mysqli_connect(DB_HOST, DB_USER, DB_PASSWORD, DB_NAME);
@@ -163,10 +164,10 @@ echo('<p class="login">You are logged in as ' . $_SESSION['minion_name'] .  '. <
 
   mysqli_close($dbc);
 ?>
-      </a>
+                        </a>
 
 
-</div>
-</div>
+            </div>
+    </div>
 
-  <?php include("includes/footer_inc.php"); ?>
+    <?php include("includes/footer_inc.php"); ?>

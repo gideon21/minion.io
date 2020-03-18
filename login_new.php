@@ -46,40 +46,42 @@ $error_msg = "";
   ob_flush() ;
 ?>
 
-<!--this is all the page output code -->
+    <!--this is all the page output code -->
 
-<?php
+    <?php
 
 	include ('includes/header_inc.php');
   // If the session var is empty, show any error message and the log-in form; otherwise confirm the log-in
   if (empty($_SESSION['minion_id'])) {
     echo '<p class="error">' . $error_msg . '</p>';
 ?>
-<div class="g1-container"><!-- Container holds content -->
-<div class="form-content"><!-- Container holds form -->
-  <form method="post" action="<?php echo $_SERVER['PHP_SELF']; ?>">
-      <p>Log In</p>
-    <fieldset>
-      <label for="username">Username</label>
-      <br>
-      <input type="text" name="username" value="<?php if (!empty($user_username)) echo $user_username; ?>" />
-      <br>
-      <label for="password">Password</label>
-      <br>
-      <input type="password" name="password" />
-    </fieldset>
-    <br>
-    <input type="submit" value="Log In" name="submit" />
-  </form>
+        <div class="g1-container">
+            <!-- Container holds content -->
+            <div class="form-content">
+                <!-- Container holds form -->
+                <form method="post" action="<?php echo $_SERVER['PHP_SELF']; ?>">
+                    <p>Log In</p>
+                    <fieldset>
+                        <label for="username">Username</label>
+                        <br>
+                        <input type="text" name="username" value="<?php if (!empty($user_username)) echo $user_username; ?>" />
+                        <br>
+                        <label for="password">Password</label>
+                        <br>
+                        <input type="password" name="password" />
+                    </fieldset>
+                    <br>
+                    <input type="submit" value="Log In" name="submit" />
+                </form>
 
-</div>
-</div>
+            </div>
+        </div>
 
-<?php
+        <?php
   }
   else {
     // Confirm the successful log-in
         echo('<p class="login">You are logged in as ' . $_SESSION['username'] .  '. <a href="logout.php">Log out</a>.</p>');
   }
 ?>
-<?php include("includes/footer_inc.php"); ?>
+            <?php include("includes/footer_inc.php"); ?>
