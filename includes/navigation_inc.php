@@ -15,7 +15,7 @@
 
               <?php
               if (isset($_SESSION['minion_id'])) {
-                  echo '<li><a href="logout.php" id="matchup">Dynamic Logout link based on being logged in</a></li>
+                  echo '<li><a href="logout.php" id="matchup">Log out</a></li>
                   ';
               }// This is the flipside to your statement, a logout button is Displayed if you are logged in and a session variable has been set
                // This mechanism can be extended to include any form of navigation you want dependent on the session being set
@@ -23,5 +23,8 @@
               ?>
         </ul>
     </nav>
+    <div class="minion-logo">
+      <img src="images/film.png" width="50" height="50">
+    </div>
 </div>
 <!-- End of navigation -->

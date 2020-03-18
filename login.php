@@ -76,7 +76,7 @@ $error_msg = "";
   if (empty($_SESSION['minion_id'])) {
     echo '<p class="error">' . $error_msg . '</p>';
 ?>
-<p class="p-iframe">Your a memeber now so watch please</p>
+<p class="p-iframe">You're a memeber now so feel free to watch</p>
 <div class="iframe">
 <iframe width="600" height="400" src="https://www.youtube.com/embed/QmsB9NEsVFU"
  frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>

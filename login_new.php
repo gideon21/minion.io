@@ -82,3 +82,4 @@ $error_msg = "";
         echo('<p class="login">You are logged in as ' . $_SESSION['username'] .  '. <a href="logout.php">Log out</a>.</p>');
   }
 ?>
+<?php include("includes/footer_inc.php"); ?>

@@ -3,7 +3,10 @@ require_once("includes/startSession_inc.php"); // Start the session
 include("includes/header_inc.php");
 include("includes/navigation_inc.php"); ?>
 
-<div id="main">
+<div class="g1-container"><!-- Container holds content -->
+  <h2 class="g-minion-c">Minions Club</h2>
+  <p class="notice">Your profile</p>
+<div class="form-content"><!-- Container holds form -->
 
 <?php
 
@@ -67,4 +70,6 @@ include("includes/navigation_inc.php"); ?>
   mysqli_close($dbc);// Close the database connection
 
 ?>
+</div>
+</div>
 <?php include("includes/footer_inc.php"); ?>

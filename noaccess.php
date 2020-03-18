@@ -16,7 +16,7 @@ include("includes/navigation_inc.php");
   if (!isset($_SESSION['minion_id'])) {
       echo '<h2>ACCESS DENIED</h2>';
 
-    echo '<p class="login">Please <a href="login.php">log in</a> to access this page.</p>';
+    echo '<p class="login">Please <a href="login.php">log in</a> to access your profile.</p>';
     exit();
   }
   else {
