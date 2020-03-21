@@ -41,7 +41,9 @@
                         <label for="new_picture">Picture</label>
                         <br>
                         <input type="file" id="new_picture" name="new_picture" />
-                        <?php if (!empty($old_picture)) {
+                        
+                        
+<?php if (!empty($old_picture)) {
   echo '<img class="minionmates" src="' . MM_UPLOADPATH . $old_picture . '" alt="minionmates Picture" />';
 } ?>
                     </fieldset>
@@ -147,7 +149,7 @@ echo('<p class="login">You are logged in as ' . $_SESSION['minion_name'] .  '. <
     $query = "SELECT minion_name, code_name, cloned, recruited, location,  picture FROM minionmates WHERE minion_id = '" .  $_SESSION['minion_id'] . "'";
     $data = mysqli_query($dbc, $query);
     $row = mysqli_fetch_array($data);
-
+    // if row is zero in database
     if ($row != NULL) {
       $minion_name = $row['minion_name'];
       $code_name = $row['code_name'];
@@ -156,6 +158,7 @@ echo('<p class="login">You are logged in as ' . $_SESSION['minion_name'] .  '. <
       $location = $row['location'];
       $old_picture = $row['picture'];
     }
+      // Show Error (There was a problem accessing your Profile and Why not create your a profile)
     else {
       echo '<p class="error">There was a problem accessing your Profile.</p>';
       echo '<p>Why not create your <a href="minion_profile.php">Profile</a>?</p>';
@@ -164,8 +167,7 @@ echo('<p class="login">You are logged in as ' . $_SESSION['minion_name'] .  '. <
 
   mysqli_close($dbc);
 ?>
-                        </a>
-
+                      
 
             </div>
     </div>

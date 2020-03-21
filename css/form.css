@@ -1,8 +1,10 @@
 .form-content {
     padding: 10px 50px;
+    padding-bottom: auto;
     width: 62%;
     height: auto;
-    margin-left: 35px;
+    margin-left: auto;
+    margin-right:auto;
     margin-top: 100px;
     border: 1px solid #d9d9d9;
     background-color: #fff;
@@ -59,4 +61,31 @@ input[type=submit] {
 }
 input[type=submit]:hover {
     background-color: #45a049;
+}
+
+/* This is our style for the invalid fields */
+
+input:invalid{
+  border-color: #900;
+  background-color: #FDD;
+}
+
+input:focus:invalid {
+  outline: none;
+}
+
+/* This is the style of our error messages */
+.error {
+  width  : 100%;
+  padding: 0;
+  font-size: 80%;
+  color: white;
+  background-color: #900;
+  border-radius: 0 0 5px 5px;
+
+  box-sizing: border-box;
+}
+
+.error.active {
+  padding: 0.3em;
 }

@@ -1,11 +1,28 @@
-<?php
-    require_once("includes/startSession_inc.php"); // Very important for the login part
-    include("includes/header_inc.php");  //Now includes database connection to be tidy
-    include("includes/navigation_inc.php"); // Dynamic navigation included here
+<?php 
+require_once("includes/startSession_inc.php");
+include("includes/header_inc.php");
+include("includes/navigation_inc.php");
 ?>
-    <div class="g1-container">
 
-        <?php
+    <div class="g1-container">
+<?php
+  echo '<h2 class="g-minion-c">Minions Club</h2>';
+  ?>
+ <div class="form-content">
+
+                <?php
+ // Make sure the user is logged in before going any further.
+ // This shows you the you can't get any further if you have no session set
+
+  if (!isset($_SESSION['minion_id'])) {
+      echo '<h2>ACCESS DENIED</h2>';
+
+    echo '<p class="login">Please <a href="login.php">log in</a> to access your profile.</p>';
+    exit();
+  }
+  else {
+      
+
   // Connect to the database
   require_once("includes/connectvars_inc.php");
   //echo DB_HOST, DB_USER ,DB_PASSWORD, DB_NAME;
@@ -21,20 +38,17 @@
   // Loop through the array of user data, formatting it as HTML
 
  //Start the HTML for a table, but outside of the main loop that brings the results back from the database
-echo '<h2 class="g-minion-c">Minions Club</h2>';
-echo '<p class = "notice">To join the Minions Club you must register</p>';
-echo '<div class="main-content">';
-echo '<h2>New members</h2>';
+echo ('<h2>Welcome back ' . $_SESSION['minion_name'] . '</h2>');
   echo '<table>';
   while ($row = mysqli_fetch_array($data)) {
     if (is_file(MM_UPLOADPATH . $row['picture']) && filesize(MM_UPLOADPATH . $row['picture']) > 0) {
-      echo '<tr><td><img src="' . MM_UPLOADPATH . $row['picture'] . '" alt="' . $row['minion_name'] . '" /></td>';
+    
+      echo '<td><img src="' . MM_UPLOADPATH . $row['picture'] . '" alt="' . $row['minion_name'] . '" /><br><button><a href="delete_record.php">Delete item</a></button></td>';
     }// So if we can find a minion Record, their mugshot will be shown by default
 
     else
     {
-
-      echo '<tr><td><img src="' . MM_UPLOADPATH . 'profile_minion.png' . '" alt="' . $row['minion_name'] . '" /></td>';
+      echo '<td><img src="' . MM_UPLOADPATH . 'profile1.png' . '" alt="' . $row['minion_name'] . '" /><br><button><a href="delete_record.php">Delete item</a></button></td>';
       echo '<br>';
     }// This bit of code puts in a default image if there is no profile picture
 
@@ -49,12 +63,22 @@ echo '<h2>New members</h2>';
   }
   echo '</table>';
   echo '</div>';
+        
 
   mysqli_close($dbc);
+        
 
-?>
-
-    </div>
-
-
+    echo ' <div class="main-content">';
+    // Shows logged in user ($_SESSION['minion_name'])
+    echo('<p class="login">You are logged in as ' . $_SESSION['minion_name'] . '. <a href="logout.php">Log out</a>.</p>');
+    echo('<p>You are more than welcome to be here, as this site is secured by sessions and cookies<p>
+        <p>Even if you accidentally close your browser, the cookie should let you back in until you <strong>logout</strong></p>');
+      
+      echo '</div>';
+  }
+      ?>
+          
+          </div>
+</div>
+    
     <?php include("includes/footer_inc.php"); ?>

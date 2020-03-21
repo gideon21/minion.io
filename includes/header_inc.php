@@ -35,9 +35,15 @@
             <meta name="msapplication-TileImage" content="favicon/ms-icon-144x144.png">
             <meta name="theme-color" content="#ffffff">
             <script type="text/javascript" src="js/validate.js"></script>
-            <script type="text/javascript" src="js/minion-validations.js"></script>
             <script type="text/javascript">
-                // This will trim spaces in a string
+                // This will trim spaces in a string (Js validation)
+                function removeSpaces(string) {
+                    return string.split(' ').join('');
+                }
+            </script>
+
+            <script type="text/javascript">
+                // This will trim spaces in a string (Js validation)
                 function removeSpaces(string) {
                     return string.split(' ').join('');
                 }

@@ -1,154 +1,52 @@
+// Reference : https://developer.mozilla.org/en-US/docs/Learn/Forms/Form_validation
+// There are many ways to pick a DOM node; here we get the form itself and the email
+// input box, as well as the span element into which we will place the error message.
+const form  = document.getElementsByTagName('form')[0];
 
-	function firstField() {
-		document.getElementById('username').focus();
-	}
+const email = document.getElementById('email');
+const emailError = document.querySelector('#email + span.error');
 
-	function setName() {
-		document.getElementById('password').value = "password";
-	}
-	
-    function validateDate(inputField, helpText) {
-        // First see if the input value contains data
-        if (!validateNonEmpty(inputField, helpText))
-          return false;
-        // Then see if the input value is a date
-        return validateRegEx(/^\d{2}\/\d{2}\/\d{2,4}$/,
-          inputField.value, helpText,
-          "Please enter a date (for example, 01/14/1975).");
-      }
-		
+email.addEventListener('input', function (event) {
+  // Each time the user types something, we check if the
+  // form fields are valid.
 
-/*
-	function doubleCheck(inputField, helpText) {
-        // See if the input value contains any text
-        if (inputField.value.length == 0) {
-          // The data is invalid, so set the help message
-          if (helpText != null)
-            helpText.innerHTML = "Please enter a value.";
-			doSelection(inputField);
-		//setTimeout(function (){inputField.focus(), 0});
+  if (email.validity.valid) {
+    // In case there is an error message visible, if the field
+    // is valid, we remove the error message.
+    emailError.innerHTML = ''; // Reset the content of the message
+    emailError.className = 'error'; // Reset the visual state of the message
+  } else {
+    // If there is still an error, show the correct error
+    showError();
+  }
+});
 
-		  return false;
-        }
-		else if {
-			 	var guess = document.form.password.value;
-  				var secret = document.form.password2.value;
-  				if (guess != secret) {
-						if (helpText != null)
-						helpText.innerHTML = "Please enter a value.";
-						//doSelection(inputField);
-				}
-		}
-        else {
-          // The data is OK, so clear the help message
-          if (helpText != null)
-            helpText.innerHTML = "";
-          return true;
-        }
-     }
-*/
+form.addEventListener('submit', function (event) {
+  // if the email field is valid, we let the form submit
 
+  if(!email.validity.valid) {
+    // If it isn't, we display an appropriate error message
+    showError();
+    // Then we prevent the form from being sent by canceling the event
+    event.preventDefault();
+  }
+});
 
-/*	 function validateNonEmpty(inputField, helpText) {
- // See if the input value contains any text
- 	return validateRegEx(/.+/,
- 	inputField.value, helpText,
-	"Please enter a value.");
-} 
-*/	
+function showError() {
+  if(email.validity.valueMissing) {
+    // If the field is empty
+    // display the following error message.
+    emailError.textContent = 'You need to enter an e-mail address.';
+  } else if(email.validity.typeMismatch) {
+    // If the field doesn't contain an email address
+    // display the following error message.
+    emailError.textContent = 'Entered value needs to be an e-mail address.';
+  } else if(email.validity.tooShort) {
+    // If the data is too short
+    // display the following error message.
+    emailError.textContent = `Email should be at least ${ email.minLength } characters; you entered ${ email.value.length }.`;
+  }
 
-function validateNonEmpty(inputField, helpText) {
-        // See if the input value contains any text
-        if (inputField.value.length == 0) {
-          // The data is invalid, so set the help message
-          var t = inputField.getElementById;
-		  t.addClass = "highlight";
-		  if (helpText != null)
-            helpText.innerHTML = "Don't leave this blank.";
-		  return false;
-        }
-        else {
-          // The data is OK, so clear the help message
-          if (helpText != null)
-		  inputField.removeClass = "back_highlight";
-            helpText.innerHTML = "";
-          return true;
-        }
-     }
-	
-	
-	function validateLength(minLength, maxLength, inputField, helpText) {
-        // See if the input value contains at least minLength but no more than maxLength characters
-        if (inputField.value.length < minLength || inputField.value.length > maxLength) {
-          // The data is invalid, so set the help message
-          if (helpText != null)
-            helpText.innerHTML = "Please enter a value " + minLength + " to " + maxLength +
-              " characters in length.";
-			//setTimeout(function (){inputField.focus(), 0});
-		  return false;
-        }
-        else {
-          // The data is OK, so clear the help message
-          if (helpText != null)
-            helpText.innerHTML = "";
-          return true;
-        }
-      }
-	
-	
-	function validateNumber(inputField, helpText) {
-        // See if the input value contains any text
-        if (isNaN(parseFloat(inputField.value))) {
-          // The data is invalid, so set the help message
-          if (helpText != null)
-            helpText.innerHTML = "Please enter a number.";
-
-          return false;
-        }
-        else {
-          // The data is OK, so clear the help message
-          if (helpText != null)
-            helpText.innerHTML = "";
-          return true;
-        }
-     }
-
-	function validateEmail (inputField, helpText) {
-
-	 if ((inputField.value.indexOf(".")<3) || 
-		(inputField.value.indexOf("@")<1) || 
-		(inputField.value.indexOf(" ")!='-1'))   //checks for a dot after position 3, an @ after the first place and no spaces
-		{
-          if (helpText != null)
-            helpText.innerHTML = "Please enter an email address.";
-			//document.my_form.inputField.focus();
-          return false;
-        }
-        else {
-          // The data is OK, so clear the help message
-          if (helpText != null)
-            helpText.innerHTML = "";
-          return true;
-        }
-	}
-	
-	function addLoadEvent(func) { 
-	  var oldonload = window.onload; 
-	  if (typeof window.onload != 'function') { 
-	    window.onload = func; 
-	  } else { 
-	    window.onload = function() { 
-	      if (oldonload) { 
-	        oldonload(); 
-	      } 
-	      func(); 
-	    } 
-	  } 
-	} 
-	 
-	addLoadEvent(firstField);
-	addLoadEvent(setName);
-
-	
-	
-
+  // Set the styling appropriately
+  emailError.className = 'error active';
+}

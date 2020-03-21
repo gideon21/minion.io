@@ -6,7 +6,7 @@ include("includes/navigation_inc.php"); ?>
     <div class="g1-container">
         <!-- Container holds content -->
         <h2 class="g-minion-c">Minions Club</h2>
-        <p class="notice">Your profile</p>
+        <p class="notice">Profile</p>
         <div class="form-content">
             <!-- Container holds form -->
 
@@ -28,7 +28,7 @@ include("includes/navigation_inc.php"); ?>
   if (mysqli_num_rows($data) == 1) {
     // The user row was found so display the user data
         $row = mysqli_fetch_array($data);
-
+        // show table and display all data in table
         echo '<table>';
         if (!empty($row['minion_name']))// Lots of not empty statements here
             {
