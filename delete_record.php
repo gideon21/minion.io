@@ -33,7 +33,7 @@
          echo "File was deleted!";
     }
      
-    // Udate this in the database
+    // Update this in the database
     $query = "UPDATE minionmates SET picture = '$picture' WHERE minion_name = '$sessionid';";
 
     mysqli_query($dbc, $query);
